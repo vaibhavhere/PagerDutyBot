@@ -4,7 +4,7 @@ async function acknowledgeIncidents() {
       Authorization: `Token token=${process.env.PAGERDUTY_API_KEY}`,
       'Content-Type': 'application/json',
     };
-
+    console.log(process.env);
     const url = `https://api.pagerduty.com/incidents?statuses[]=triggered&user_ids[]=${process.env.PAGERDUTY_USER_ID}`;
     
     const response = await fetch(url, { headers });
