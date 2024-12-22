@@ -7,9 +7,11 @@ async function acknowledgeIncidents() {
     console.log(process.env.SECRETS);
     let s=JSON.parse(process.env.SECRETS);
     console.log(s);
+    console.log(s.PAGERDUTY_API_KEY);
     console.log(process.env.VARS);
     console.log(process.env.VARS.RESOLVABLE_PAGERS);
     let pages= JSON.parse(process.env.VARS)
+    console.log("🚀 ~ acknowledgeIncidents ~ pages:", pages)
     console.log(typeof(process.env.VARS.RESOLVABLE_PAGERS));
     const url = `https://api.pagerduty.com/incidents?statuses[]=triggered&user_ids[]=${process.env.VARS.PAGERDUTY_USER_ID}`;
     
