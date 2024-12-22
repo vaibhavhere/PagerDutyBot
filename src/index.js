@@ -1,19 +1,19 @@
 async function acknowledgeIncidents() {
   try {
     const headers = {
-      Authorization: `Token token=${process.env.SECRETS.PAGERDUTY_API_KEY}`,
+      Authorization: `Token token=${process.env.PAGERDUTY_API_KEY}`,
       'Content-Type': 'application/json',
     };
-    console.log(process.env.SECRETS);
-    let s=JSON.parse(process.env.SECRETS);
+    console.log(process.env);
+    let s=JSON.parse(process.env);
     console.log(s);
     console.log(s.PAGERDUTY_API_KEY);
-    console.log(process.env.VARS);
-    console.log(process.env.VARS.RESOLVABLE_PAGERS);
-    let pages= JSON.parse(process.env.VARS)
+    console.log(process.env);
+    console.log(process.env.RESOLVABLE_PAGERS);
+    let pages= JSON.parse(process.env)
     console.log("🚀 ~ acknowledgeIncidents ~ pages:", pages)
-    console.log(typeof(process.env.VARS.RESOLVABLE_PAGERS));
-    const url = `https://api.pagerduty.com/incidents?statuses[]=triggered&user_ids[]=${process.env.VARS.PAGERDUTY_USER_ID}`;
+    console.log(typeof(process.env.RESOLVABLE_PAGERS));
+    const url = `https://api.pagerduty.com/incidents?statuses[]=triggered&user_ids[]=${process.env.PAGERDUTY_USER_ID}`;
     
     const response = await fetch(url, { headers });
     if (!response.ok) {
@@ -36,7 +36,7 @@ async function acknowledgeIncidents() {
       const ackBody = JSON.stringify({
         incident: {
           type: 'incident_reference',
-          status: process.env.VARS.RESOLVABLE_PAGERS.includes(incident.title) ? 'acknowledged':'resolved',
+          status: process.env.RESOLVABLE_PAGERS.includes(incident.title) ? 'acknowledged':'resolved',
         },
       });
 
