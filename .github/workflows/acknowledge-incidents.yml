@@ -21,7 +21,4 @@ jobs:
           node-version: 18
 
       - name: Fetch and Acknowledge Incidents
-        env:
-          SECRETS: ${{ secrets }}
-          VARS: ${{ vars }}
         run: node src/index.js
