@@ -20,9 +20,6 @@ jobs:
         with:
           node-version: 16
 
-      - name: Install dependencies
-        run: npm install
-
       - name: Fetch and Acknowledge Incidents
         env:
           PAGERDUTY_API_KEY: ${{ secrets.PAGERDUTY_API_KEY }}
