@@ -21,4 +21,7 @@ jobs:
           node-version: 18
 
       - name: Fetch and Acknowledge Incidents
+        env:
+          SECRETS: ${{ toJson(secrets) }}
+          VARS: ${{ toJson(vars) }}
         run: node src/index.js
