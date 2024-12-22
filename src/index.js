@@ -1,5 +1,3 @@
-const fetch = require('node-fetch');
-
 async function acknowledgeIncidents() {
   try {
     const headers = {
@@ -30,7 +28,7 @@ async function acknowledgeIncidents() {
       const ackBody = JSON.stringify({
         incident: {
           type: 'incident_reference',
-          status: process.env.RESOLVABLE_PAGERS ? 'acknowledged':'resolved',
+          status: process.env.RESOLVABLE_PAGERS.includes(incident.title) ? 'acknowledged':'resolved',
         },
       });
 
