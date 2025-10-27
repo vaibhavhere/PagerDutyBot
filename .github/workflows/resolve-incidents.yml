@@ -2,8 +2,8 @@ name: Resolve PagerDuty Incidents
 
 on:
   schedule:
-    # Run every 25 minutes
-    - cron: '*/25 * * * *'
+    # Run every 20 minutes
+    - cron: '*/20 * * * *'
   workflow_dispatch:
 jobs:
   acknowledge-incidents:
